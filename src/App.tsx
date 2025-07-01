@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './paginas/Home';
+import DishDetails from './componentes/PratoDetalhes';
+import FormularioPrato from './componentes/FormularioPrato';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/detalhes-prato/:id" element={<DishDetails />} />
+        <Route path="/editar-prato/:id" element={<FormularioPrato />} />
+        <Route path="/novo-prato" element={<FormularioPrato />} />
+        <Route path="/deletar-prato/:id" element={<h1>Deletar o prato</h1>} />
+      </Routes>
+    </Router>
   );
 }
 
